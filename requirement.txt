@@ -1,0 +1,3 @@
+To install playwright                       >   npm init playwright@latest
+To install cucumber report for playwright   >   npm install @cucumber/playwright
+To run our E2E test from featurefile        >   npx cucumber-js --exit --format html:cucumber-report.html
