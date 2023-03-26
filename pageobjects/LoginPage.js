@@ -1,3 +1,5 @@
+const config = require('../playwright.config');
+
 class LoginPage {
 
 constructor(page)
@@ -10,7 +12,9 @@ constructor(page)
 
 async goTo()
 {
-    await this.page.goto("https://www.akasaair.com");
+    const base_url = config.use.baseURL;
+    //await this.page.goto("https://www.akasaair.com");
+    await this.page.goto(base_url);
     if(await this.cookiesModal.isVisible()){
         await this.cookiesModal.click();
     }

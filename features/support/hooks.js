@@ -24,5 +24,5 @@ AfterStep(async function ({ result }) {
 });
 
 After(function () {
-    console.log("I am last to execute");
+    // This hook will be executed After Suite execution complete.
 });

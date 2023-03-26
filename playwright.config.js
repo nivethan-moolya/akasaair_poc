@@ -15,13 +15,14 @@ const config = {
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-
+    baseURL: 'https://www.akasaair.com',
     browserName : 'chromium',
     headless : false,
     screenshot : 'on',
     trace : 'on',//off,on
     actionTimeout: 10000,
     navigationTimeout: 30000,
+
   },
 };
 

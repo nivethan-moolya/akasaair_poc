@@ -2,21 +2,23 @@ const {expect} = require('@playwright/test');
 
 class HomePage {
 
+    
 constructor(page)
 {
+    const WEB_ONLY = "[class= 'ComponentName_container web-only']";
     this.page = page;
-    this.searchPanel= page.locator("[class= 'ComponentName_container web-only'] [class='ComponentName_searchWidgetPanel web-only'] [class*='searchpanel_searchPanel_tab'] p");
-    this.searchRadioButton = page.locator("[class= 'ComponentName_container web-only'] [role='radiogroup'] p");
-    this.selectRadioButton = page.locator("[class= 'ComponentName_container web-only'] [role='radiogroup'] input");
-    this.validateRadioButton = page.locator("[class= 'ComponentName_container web-only'] [role='radiogroup'] [class*='Mui-checked']");
-    this.choosePlace = page.locator("[class= 'ComponentName_container web-only'] [class*='Booking_autoComplete_box'] input");
+    this.searchPanel= page.locator(WEB_ONLY+" [class='ComponentName_searchWidgetPanel web-only'] [class*='searchpanel_searchPanel_tab'] p");
+    this.searchRadioButton = page.locator(WEB_ONLY+" [role='radiogroup'] p");
+    this.selectRadioButton = page.locator(WEB_ONLY+" [role='radiogroup'] input");
+    this.validateRadioButton = page.locator(WEB_ONLY+" [role='radiogroup'] [class*='Mui-checked']");
+    this.choosePlace = page.locator(WEB_ONLY+" [class*='Booking_autoComplete_box'] input");
     //this.choosePlace = page.locator("[id*='mui-']");
     this.typeBoarding = page.locator("div[class*='Mui-focused']");
     this.selectOption = page.locator("[class*='Booking_popper'] li");
-    this.datePicker = page.locator("[class= 'ComponentName_container web-only'] [placeholder*='yyyy']");
-    this.viewPassengers = page.locator("[class= 'ComponentName_container web-only'] img[alt='Down Arrow']");
+    this.datePicker = page.locator(WEB_ONLY+" [placeholder*='yyyy']");
+    this.viewPassengers = page.locator(WEB_ONLY+" img[alt='Down Arrow']");
     this.selectPassengers = page.locator("[passenger='[object Object]'] [class*='MuiPaper-root']");
-    this.searchFlight = page.locator("[class= 'ComponentName_container web-only'] [class*='componentName_FlightBooking'] [class*='Booking_search_lower'] button");
+    this.searchFlight = page.locator(WEB_ONLY+" [class*='componentName_FlightBooking'] [class*='Booking_search_lower'] button");
 }
 
 async validatePanelName(expectedPanelName)
@@ -70,8 +72,9 @@ async clearAndEnterDate(travelDate){
     await this.choosePlace.first().click();
     await this.choosePlace.first().focus();
     await this.datePicker.fill('');
-    await this.datePicker.type(travelDate, {delay: 100});
-    await this.page.keyboard.press('Tab');
+    await this.datePicker.type(travelDate);
+    await this.choosePlace.first().focus();
+    await this.page.keyboard.press('Insert');
     await expect( this.searchFlight).toBeDisabled();
 
 }
