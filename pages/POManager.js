@@ -1,6 +1,7 @@
+const {HomePage} = require('./HomePage');
 const {LoginPage} = require('./LoginPage');
-const {HomePage} = require('./HomePage')
-const {FlightSearchPage} = require('./FlightSearchPage')
+const {FlightSearchPage} = require('./FlightSearchPage');
+
 class POManager
 {
 constructor(page)
@@ -9,7 +10,6 @@ constructor(page)
     this.loginPage = new LoginPage(this.page);
     this.homePage = new HomePage(this.page);
     this.flightSearchPage = new FlightSearchPage(this.page);
-
 }
 
 getLoginPage()

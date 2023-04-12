@@ -1,0 +1,20 @@
+{
+    "bookFlight": "Book a flight",
+    "checkIn": "Check-in", 
+    "manageBooking": "Manage booking",
+    "tripType": "One Way",
+    "travelDate": "Thu, 30 Mar 2023",
+    "boarding": "AMD",
+    "destination": "BOM",
+    "passengers": [
+        {
+            "group": "Adult(s)",
+            "headCount": "2"
+        },
+        {
+            "group": "Children",
+            "headCount": "1"
+        }
+    ]
+
+}
