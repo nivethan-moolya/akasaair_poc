@@ -3,18 +3,23 @@
     "checkIn": "Check-in", 
     "manageBooking": "Manage booking",
     "tripType": "One Way",
-    "travelDate": "Thu, 30 Mar 2023",
     "boarding": "AMD",
     "destination": "BOM",
     "passengers": [
         {
             "group": "Adult(s)",
-            "headCount": "2"
-        },
-        {
-            "group": "Children",
             "headCount": "1"
         }
-    ]
-
+    ],
+    "passengerNames": [
+        {
+            "firstName": "Test",
+            "lastName": "Dummy",
+            "gender": "Male"
+        }
+    ],
+    "passengerContactDetails": {
+        "phoneNumber": "+91 9182892275",
+        "email": "renukaprasad@codewalnut.com"
+    }
 }

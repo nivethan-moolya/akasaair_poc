@@ -54,7 +54,7 @@ async enterBoarding(boardingPlace){
     await test.step(`I should be able to select the boarding place as `+boardingPlace, async () => {
         await this.choosePlace.first().click();
         await this.choosePlace.first().focus();
-        await this.typeBoarding.type(boardingPlace, {delay: 1000});
+        await this.typeBoarding.type(boardingPlace);
         // await this.choosePlace.first().click();
         // await this.typeBoarding.type(boardingPlace);
         await this.selectOption.first().click();
@@ -64,21 +64,21 @@ async enterDestination(destinationPlace){
     await test.step(`I should be able to select the destination place as `+destinationPlace, async () => {
         await this.choosePlace.nth(1).click();
         await this.choosePlace.nth(1).focus();
-        await this.typeBoarding.type(destinationPlace, {delay: 1000});
+        await this.typeBoarding.type(destinationPlace);
         // await this.choosePlace.last().click();
         // await this.typeBoarding.type(destinationPlace);
         await this.selectOption.first().click();
 })}
 
-async clearAndEnterDate(travelDate){
-    await test.step(`I should be able to provide the departure date as `+travelDate, async () => {
+async clearAndEnterDate(){
+    await test.step(`I should be able to provide the departure date`, async () => {
         await this.choosePlace.first().click();
         await this.choosePlace.first().focus();
-        await this.datePicker.fill('');
-        await this.datePicker.type(travelDate);
+        await this.page.getByRole('button', {name:'Choose Date'}).click();
+        await this.page.getByRole('gridcell', {name: new Date().getDate()+1}).click();
         await this.choosePlace.first().focus();
         await this.page.keyboard.press('Insert');
-        await expect( this.searchFlight).toBeDisabled();
+        await expect(this.searchFlight).toBeDisabled();
 })}
 
 async addPassengers(adultery, total){
