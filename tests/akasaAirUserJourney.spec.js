@@ -46,8 +46,15 @@ test.describe("AkasaAir booking scenario", () => {
     await addPassengerDetailsPage.validateAddPassengerDetailsPageTitle();
     const paxName = testdata.passengerNames[0];
     const paxContactDetails = testdata.passengerContactDetails;
-    await addPassengerDetailsPage.enterUserName({firstName: paxName.firstName, lastName: paxName.lastName, gender: paxName.gender});
-    await addPassengerDetailsPage.enterUserContactDetailsAndContinue({phoneNumber: paxContactDetails.phoneNumber, email: paxContactDetails.email});
+    await addPassengerDetailsPage.enterUserName({
+      firstName: paxName.firstName,
+      lastName: paxName.lastName,
+      gender: paxName.gender,
+    });
+    await addPassengerDetailsPage.enterUserContactDetailsAndContinue({
+      phoneNumber: paxContactDetails.phoneNumber,
+      email: paxContactDetails.email,
+    });
 
     //Then I should be able to move to the next page to select addons
     const selectAddOnsPage = poManager.getAddOnsPage();
@@ -57,8 +64,72 @@ test.describe("AkasaAir booking scenario", () => {
     const seatSelectPage = poManager.getSeatSelectPage();
     await seatSelectPage.skipSeatSelection();
 
-    //Then I should be able to move to the next page to booking summary 
+    //Then I should be able to move to the next page to booking summary
     const bookingSummaryPage = poManager.getBookingSummaryPage();
-    await bookingSummaryPage.validateBookingSummaryPage({passengerName: `${paxName.firstName} ${paxName.lastName}`});
+    await bookingSummaryPage.validateBookingSummaryPage({
+      passengerName: `${paxName.firstName} ${paxName.lastName}`,
+    });
+    await bookingSummaryPage.makePayment();
+
+    //Once the payment is successful, I should be able to move to the booking success page
+    const bookingSuccessPage = poManager.getBookingSuccessPage();
+    await bookingSuccessPage.validateBookingSuccessMessage({
+      bookingSuccessText: testdata.bookingSuccessMessage,
+    });
+    await bookingSuccessPage.navigateToManageBooking({
+      manageBookingText: testdata.manageBooking,
+    });
+
+    //It should take the user to the retrieve booking page
+    const retrieveBookingPage = poManager.getRetrieveBookingPage();
+    await retrieveBookingPage.validateRetrieveBookingPage({
+      modifyBookingText: testdata.modifyBooking,
+    });
+    await retrieveBookingPage.navigateToCheckIn();
+
+    //It should take the user to the check-in summary page
+    const checkInSummaryPage = poManager.getCheckInSummaryPage();
+    await checkInSummaryPage.validateCheckInSummaryPage({
+      checkInSummaryText: testdata.checkInSummary,
+    });
+    await checkInSummaryPage.selectPassenger();
+    await checkInSummaryPage.navigateToCheckInAddonsPage();
+
+    //It should take the user to the check-in add-ons page
+    const checkInAddOnsPage = poManager.getCheckInAddOnsPage();
+    await checkInAddOnsPage.validateCheckInAddOnsPage({
+      checkInAddOnsText: testdata.checkInAddOnsText,
+    });
+    await checkInAddOnsPage.navigateToSeatSelect();
+
+    //It should take the user to the check-in seat select page
+    const checkInSeatSelectPage = poManager.getCheckInSeatSelectPage();
+    await checkInSeatSelectPage.validateCheckInSeatSelectPage({
+      checkInSeatSelectText: testdata.checkInSeatSelect,
+    });
+    await checkInSeatSelectPage.selectFreeSeat();
+    await checkInSeatSelectPage.navigateToHealthDeclaration();
+
+    //It should take the user to the check-in seat select page
+    const healthDeclarationPage = poManager.getHealthDeclarationPage();
+    await healthDeclarationPage.validateHealthDeclarationPage({
+      healthDeclarationText: testdata.healthDeclaration,
+    });
+    await healthDeclarationPage.fillHealthDeclarationForm();
+    await healthDeclarationPage.navigateToDangerousGoods();
+
+    //It should take the user to the dangerous goods page
+    const dangerousGoodsPage = poManager.getDangerousGoodsPage();
+    await dangerousGoodsPage.validateDangerousGoodsPage({
+      dangerousGoodsText: testdata.dangerousGoods,
+    });
+    await dangerousGoodsPage.acceptDangerousGoodsPolicy();
+    await dangerousGoodsPage.proceedToCheckIn();
+
+    //It should take the user to the check-in success page
+    const checkInSuccessfulPage = poManager.getCheckInSuccessfulPage();
+    await checkInSuccessfulPage.validateCheckInSuccessfulPage({
+      checkInSuccessText: testdata.checkInSuccess,
+    });
   });
 });

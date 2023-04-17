@@ -5,6 +5,14 @@ const { AddPassengerDetailsPage } = require("./AddPassengerDetails");
 const { AddOnsPage } = require("./AddOnsPage");
 const { SeatSelectPage } = require("./SeatSelectPage");
 const { BookingSummaryPage } = require("./BookingSummaryPage");
+const { BookingSuccessPage } = require("./BookingSuccessPage");
+const { RetrieveBookingPage } = require("./RetrieveBookingPage");
+const { CheckInSummaryPage } = require("./CheckInSummaryPage");
+const { CheckInAddOnsPage } = require("./CheckInAddOnsPage");
+const { CheckInSeatSelectPage } = require("./CheckInSeatSelectPage");
+const { HealthDeclarationPage } = require("./HealthDeclarationPage");
+const { DangerousGoodsPage } = require("./DangerousGoodsPage");
+const { CheckInSuccessfulPage } = require("./CheckInSuccessfulPage");
 
 class POManager {
   constructor(page) {
@@ -16,6 +24,14 @@ class POManager {
     this.addOnsPage = new AddOnsPage(this.page);
     this.seatSelectPage = new SeatSelectPage(this.page);
     this.bookingSummaryPage = new BookingSummaryPage(this.page);
+    this.bookingSuccessPage = new BookingSuccessPage(this.page);
+    this.retrieveBookingPage = new RetrieveBookingPage(this.page);
+    this.checkInSummaryPage = new CheckInSummaryPage(this.page);
+    this.checkInAddOnsPage = new CheckInAddOnsPage(this.page);
+    this.checkInSeatSelectPage = new CheckInSeatSelectPage(this.page);
+    this.healthDeclarationPage = new HealthDeclarationPage(this.page);
+    this.dangerousGoodsPage = new DangerousGoodsPage(this.page);
+    this.checkInSuccessfulPage = new CheckInSuccessfulPage(this.page);
   }
 
   getLoginPage() {
@@ -30,20 +46,56 @@ class POManager {
     return this.flightSearchPage;
   }
 
-  getAddPassengerDetailsPage () {
+  getAddPassengerDetailsPage() {
     return this.addPassengerDetailsPage;
   }
 
-  getAddOnsPage () {
+  getAddOnsPage() {
     return this.addOnsPage;
   }
 
-  getSeatSelectPage () {
+  getSeatSelectPage() {
     return this.seatSelectPage;
   }
 
-  getBookingSummaryPage () {
+  getBookingSummaryPage() {
     return this.bookingSummaryPage;
+  }
+
+  getBookingSuccessPage() {
+    return this.bookingSuccessPage;
+  }
+
+  getRetrieveBookingPage() {
+    return this.retrieveBookingPage;
+  }
+
+  getCheckInSummaryPage() {
+    return this.checkInSummaryPage;
+  }
+
+  getCheckInAddOnsPage() {
+    return this.checkInAddOnsPage;
+  }
+
+  getCheckInAddOnsPage() {
+    return this.checkInAddOnsPage;
+  }
+
+  getCheckInSeatSelectPage() {
+    return this.checkInSeatSelectPage;
+  }
+
+  getHealthDeclarationPage() {
+    return this.healthDeclarationPage;
+  }
+
+  getDangerousGoodsPage() {
+    return this.dangerousGoodsPage;
+  }
+
+  getCheckInSuccessfulPage() {
+    return this.checkInSuccessfulPage;
   }
 }
 module.exports = { POManager };

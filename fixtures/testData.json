@@ -1,25 +1,33 @@
 {
-    "bookFlight": "Book a flight",
-    "checkIn": "Check-in", 
-    "manageBooking": "Manage booking",
-    "tripType": "One Way",
-    "boarding": "AMD",
-    "destination": "BOM",
-    "passengers": [
-        {
-            "group": "Adult(s)",
-            "headCount": "1"
-        }
-    ],
-    "passengerNames": [
-        {
-            "firstName": "Test",
-            "lastName": "Dummy",
-            "gender": "Male"
-        }
-    ],
-    "passengerContactDetails": {
-        "phoneNumber": "+91 9182892275",
-        "email": "renukaprasad@codewalnut.com"
+  "bookFlight": "Book a flight",
+  "checkIn": "Check-in",
+  "manageBooking": "My Bookings",
+  "tripType": "One Way",
+  "boarding": "AMD",
+  "destination": "BOM",
+  "bookingSuccessMessage": "Booking Successful",
+  "modifyBooking": "Modify Booking",
+  "checkInSummary": "Check-in for",
+  "checkInAddOns": "Select Add-Ons",
+  "checkInSeatSelect": "Select Your Seat",
+  "healthDeclaration": "Health & contact declaration",
+  "dangerousGoods": "Prohibited Items for air travel",
+  "checkInSuccess": "Check-in Successful",
+  "passengers": [
+    {
+      "group": "Adult(s)",
+      "headCount": "1"
     }
+  ],
+  "passengerNames": [
+    {
+      "firstName": "Test",
+      "lastName": "Dummy",
+      "gender": "Male"
+    }
+  ],
+  "passengerContactDetails": {
+    "phoneNumber": "+91 9182892275",
+    "email": "renukaprasad@codewalnut.com"
+  }
 }
